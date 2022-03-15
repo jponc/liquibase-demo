@@ -1,5 +1,6 @@
 # liquibase-demo
-Liquibase demo including dryrun and update
+Liquibase demo which includes the following actions: update, dryrun, and rollback.
+https://liquibase.org/
 
 # How to use
 I've specified the docker platform to run against `linux/arm64` (Apple M1 Chip)
