@@ -1,0 +1,4 @@
+# https://github.com/liquibase/docker/issues/126
+FROM sfat/liquibase
+
+RUN lpm add mysql --global
