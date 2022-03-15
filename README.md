@@ -40,6 +40,8 @@ Liquibase Community 4.8.0 by Liquibase
 Running Changeset: db-changelogs/00000_initial.sql::initial::julian
 Running Changeset: db-changelogs/00001_another.sql::another::julian
 Liquibase command 'update' was executed successfully.
+
+
 ➜  liquibase-demo git:(master) ✗ d-c run liquibase-rollback
 Creating liquibase-demo_liquibase-rollback_run ... done
 ####################################################
@@ -63,6 +65,8 @@ Liquibase Version: 4.8.0
 Liquibase Community 4.8.0 by Liquibase
 Rolling Back Changeset: db-changelogs/00001_another.sql::another::julian
 Liquibase command 'rollbackCount' was executed successfully.
+
+
 ➜  liquibase-demo git:(master) ✗ d-c run liquibase-dryrun
 Creating liquibase-demo_liquibase-dryrun_run ... done
 ####################################################
@@ -107,6 +111,8 @@ INSERT INTO db.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECU
 UPDATE db.DATABASECHANGELOGLOCK SET `LOCKED` = 0, LOCKEDBY = NULL, LOCKGRANTED = NULL WHERE ID = 1;
 
 Liquibase command 'updateSql' was executed successfully.
+
+
 ➜  liquibase-demo git:(master) ✗ d-c run liquibase-update
 Creating liquibase-demo_liquibase-update_run ... done
 ####################################################
