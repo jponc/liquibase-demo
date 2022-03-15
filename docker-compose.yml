@@ -12,6 +12,7 @@ services:
     restart: always
     depends_on:
       - db
+
   liquibase-update:
     platform: linux/arm64
     build:
@@ -24,6 +25,20 @@ services:
     restart: always
     depends_on:
       - db
+
+  liquibase-rollback:
+    platform: linux/arm64
+    build:
+      dockerfile: LiquibaseDockerfile
+      context: .
+    command: --url=jdbc:mysql://db:3306/db --username=user --password=pass --changeLogFile=changelog.xml rollbackCount 1
+    volumes:
+      - ./changelog.xml:/liquibase/changelog.xml
+      - ./changelogs:/liquibase/db-changelogs
+    restart: always
+    depends_on:
+      - db
+
   db:
     platform: linux/x86_64
     image: mysql
