@@ -12,7 +12,7 @@ I've specified the docker platform to run against `linux/arm64` (Apple M1 Chip)
 6. By now you should have two new tables in your mysql database.
 
 
-# Screencap
+# Liquibase (update/rollback/dryrun)
 
 ```sh
 ➜  liquibase-demo git:(master) ✗ d-c run liquibase-update
@@ -130,4 +130,39 @@ Liquibase Community 4.8.0 by Liquibase
 Running Changeset: db-changelogs/00001_another.sql::another::julian
 Liquibase command 'update' was executed successfully.
 ➜  liquibase-demo git:(master) ✗
+```
+
+# Verifying
+```sh
+➜  liquibase-demo git:(master) ✗ docker exec -it liquibase-demo_db_1 bash
+root@7d677e803da8:/# mysql -uuser -ppass db;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 17
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show tables;
++-----------------------+
+| Tables_in_db          |
++-----------------------+
+| DATABASECHANGELOG     |
+| DATABASECHANGELOGLOCK |
+| MyAnother             |
+| MyTable               |
++-----------------------+
+4 rows in set (0.02 sec)
+
+mysql>
+
 ```
